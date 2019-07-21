@@ -12,7 +12,8 @@
     "redux-observable": "^1.1.0",
     "redux-thunk": "^2.3.0",
     "reduxsauce": "^1.1.0",
-    "rxjs": "^6.5.2"
+    "rxjs": "^6.5.2",
+    "start": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

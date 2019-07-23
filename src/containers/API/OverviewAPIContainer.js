@@ -75,9 +75,9 @@ const resultsSelector = state => state.OverviewReducer.result;
 
 
 export const getResultUsingSelector = createSelector(
-    resultsSelector, (result) => {
-        console.log('getFormattedResultUsingSelector :: ', result);
-        return result ? result.response : '';
+    resultsSelector, (response) => {
+        console.log('getResultUsingSelector :: ', response);
+        return response ? response : '';
     }
 );
 

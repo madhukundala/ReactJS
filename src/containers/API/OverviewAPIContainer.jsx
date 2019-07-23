@@ -1,27 +1,48 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {OverviewAction} from "../../actions/OveviewAction";
+import {createSelector} from 'reselect';
+import {OverviewComponent} from "../../components/OverviewComponent/OverviewComponent";
+
 
 class OverviewAPIContainer extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             clientToken: '',
             selectedAccounts: ''
         };
 
+        console.log("constructor");
         this.getDetails = this.getDetails.bind(this);
     }
 
-    getDetails(e) {
+    getDetails = (e) => {
         console.log("call here the getDetails ", this.state.clientToken);
         e.preventDefault();
         this.props.startOverviewSubmit(this.state.clientToken, this.state.selectedAccounts)
     }
 
+
+    clearDetails = (e) => {
+        console.log("call here the clearDetails ");
+        e.preventDefault();
+        this.props.clearOverviewSubmit()
+    }
+
+
+    componentDidMount() {
+        console.log("componentDidMount");
+    }
+
+    componentWillMount() {
+        console.log("componentWillMount");
+    }
+
+
     clientTokenChangedHandler = (event) => {
+        console.log('clientTokenChangedHandler');
         this.setState({clientToken: event.target.value});
     };
 
@@ -29,25 +50,27 @@ class OverviewAPIContainer extends React.Component {
         this.setState({selectedAccounts: event.target.value});
     };
 
+
     render() {
+
+        const {clientToken, selectedAccounts} = this.state;
+
+        const clientTokenField = {
+            value: clientToken,
+            onChange: this.clientTokenChangedHandler
+        };
+        const selectedAccountsField = {
+            value: selectedAccounts,
+            onChange: this.selectedAccountChangedHandler
+        };
+
 
         return (
             <div>
-                <div>
-                    <label>Client Token : </label>
-                    <input type="text" value={this.state.clientToken} onChange={this.clientTokenChangedHandler}/>
-                </div>
-                <div>
-                    <label>Selected Accounts : </label>
-                    <input type="text" value={this.state.selectedAccounts}
-                           onChange={this.selectedAccountChangedHandler}/>
-                </div>
-                <div>
-                    <button onClick={this.getDetails}>Submit</button>
-                    <button onClick={this.getDetails}>Clear</button>
-                </div>
-
-
+                <OverviewComponent submitaction={this.getDetails} clearaction={this.clearDetails}
+                                   clientToken={clientTokenField}
+                                   selectedAccounts={selectedAccountsField}/>
+                <br/>
                 {this.props.result ? PrettyPrintJson(this.props) : ''}
 
             </div>
@@ -55,23 +78,35 @@ class OverviewAPIContainer extends React.Component {
     }
 }
 
+const resultsSelector = state => state.OverviewReducer.result;
+
+
+export const getResultUsingSelector = createSelector(
+    resultsSelector, (response) => {
+        console.log('getResultUsingSelector :: ', response);
+        return response ? response : '';
+    }
+);
+
 
 const PrettyPrintJson = (props) => {
     // (destructured) data could be a prop for example
-    return (<div>Result of API : <pre>{JSON.stringify(props.result, null, 2)}</pre></div>);
+    return (<div><b>Result of API</b> : <pre>{JSON.stringify(props.result, null, 2)}</pre></div>);
 };
 
 const mapStateToProps = state => {
-    console.log("mapStateToProps :: ", state.result);
+    console.log("mapStateToProps :: ", state.OverviewReducer.result);
     return {
-        result: state.result
+        result: getResultUsingSelector(state)
     };
 };
+
 
 const mapDispatchToProps = dispatch => {
     console.log("mapDispatchToProps entering ",);
     return {
         startOverviewSubmit: (clientToken, selectedAcc) => dispatch(OverviewAction.getOverviewDetails(clientToken, selectedAcc)),
+        clearOverviewSubmit: () => dispatch(OverviewAction.clearOverviewSubmit()),
     };
 };
 

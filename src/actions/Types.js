@@ -7,5 +7,6 @@ export default createTypes(`
 counter/DECREMENT
 counter/STORE_RESULT
 portfolio/SUBMIT_OVERVIEW
-portfolio/SUCCESS_OVERVIEW`
+portfolio/SUCCESS_OVERVIEW
+portfolio/CLEAR_OVERVIEW`
 );

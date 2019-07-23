@@ -10,7 +10,8 @@ export class OverviewReducer {
 
     static actionHandlers = {
         [Types['portfolio/SUBMIT_OVERVIEW']]: OverviewReducer.submitOverview,
-        [Types['portfolio/SUCCESS_OVERVIEW']]: OverviewReducer.successOverview
+        [Types['portfolio/SUCCESS_OVERVIEW']]: OverviewReducer.successOverview,
+        [Types['portfolio/CLEAR_OVERVIEW']]: OverviewReducer.clearOverview
     };
 
 
@@ -20,6 +21,16 @@ export class OverviewReducer {
             ...state
         }
     };
+
+
+    static clearOverview(state) {
+        console.log('clearOverview reducer ');
+        return {
+            ...state,
+            ...OverviewReducer.initialState
+        }
+    };
+
 
     static successOverview(state, {type, payload}) {
         console.log('successOverview reducer ', type, payload);

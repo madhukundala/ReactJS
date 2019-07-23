@@ -12,7 +12,7 @@ class OverviewComponent extends React.Component {
 
     render() {
 
-        const {clientToken, selectedAccounts, handleOnChange} = this.props;
+        const {clientToken, selectedAccounts, handleOnChange, clearaction, submitaction} = this.props;
 
         const style = {
             paddingLeft: '5px'
@@ -61,9 +61,9 @@ class OverviewComponent extends React.Component {
                     <div className="col-md-4">
                     </div>
                     <div className="col-md-4">
-                        <button onClick={this.props.action}>Submit</button>
+                        <button onClick={submitaction}>Submit</button>
                         <span style={style}></span>
-                        <button>Clear</button>
+                        <button onClick={clearaction}>Clear</button>
                     </div>
                 </div>
 

@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "history": "^4.9.0",
+    "node-sass": "^4.12.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-scripts": "^3.0.1",
+    "react-select": "^3.0.4",
     "redux": "^3.7.2",
     "redux-observable": "^1.1.0",
     "redux-thunk": "^2.3.0",
     "reduxsauce": "^1.1.0",
+    "reselect": "^4.0.0",
     "rxjs": "^6.5.2",
-    "start": "^5.1.0"
+    "start": "^5.1.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
     "start": "react-scripts start",

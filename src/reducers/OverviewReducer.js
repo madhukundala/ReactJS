@@ -4,9 +4,7 @@ import {createReducer} from "reduxsauce";
 
 export class OverviewReducer {
 
-
     static initialState = {
-
         result: null
     };
 

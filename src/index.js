@@ -7,15 +7,17 @@ import {createHashHistory} from 'history';
 import reduxThunk from 'redux-thunk';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import OverviewReducer from './reducers/OverviewReducer'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import GroceryReducer from "./reducers/GroceryReducer";
 import {combineEpics, createEpicMiddleware} from "redux-observable";
-import {overviewEpic} from "./epics/OverviewEpic";
+import { categoryEpic } from "./epics/CategoryEpic";
+import {productsEpic} from "./epics/ProductsEpic";
+import {deleteProductEpic} from "./epics/DeleteProductEpic";
+import {updateProductEpic} from './epics/UpdateProductEpic';
 
-const combineReducer = combineReducers({OverviewReducer: OverviewReducer});
+const combineReducer = combineReducers({GroceryReducer: GroceryReducer});
 
-const rootEpic = combineEpics(overviewEpic);
+const rootEpic = combineEpics(productsEpic, categoryEpic,deleteProductEpic,updateProductEpic);
 
 const history = createHashHistory();
 

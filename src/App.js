@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import OverviewAPIContainer from "./containers/API/OverviewAPIContainer";
+import GroceryContainer from "./containers/API/GroceryContainer";
 
 class App extends Component {
 
@@ -10,7 +10,7 @@ class App extends Component {
             <div>
                 <br/><br/>
                 <div>
-                    <OverviewAPIContainer/>
+                    <GroceryContainer/>
                 </div>
             </div>
         );

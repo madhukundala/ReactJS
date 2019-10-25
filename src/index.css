@@ -5,3 +5,11 @@ body {
 }
 
 
+.btn {
+    /* hack for a 2px margin */
+    border-top: 2px #fff solid;
+    /* this is important if you have a background-color
+    and don't want to see it underneath the transparent border*/
+    background-clip: padding-box;
+
+}

@@ -32,8 +32,8 @@ class ProductRow extends React.Component {
                 <div className="row table-striped">
                 <input type="text" defaultValue={product.productName} ></input>
                 <input type="text" defaultValue={product.productCategory}></input>
-                <button onClick= {(event) => {event.preventDefault(); updateProductAction(product) } }>Update</button>
-                <button onClick= {(event) => {event.preventDefault(); deleteProductAction(product.id) } }>Delete</button>
+                <button class="btn btn-secondary" onClick= {(event) => {event.preventDefault(); updateProductAction(product) } }>Update</button>
+                <button class="btn btn-danger" onClick= {(event) => {event.preventDefault(); deleteProductAction(product.id) } }>Delete</button>
                 </div>
 
             </>

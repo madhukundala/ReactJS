@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import './index.scss';
+import './index.css';
 import {createHashHistory} from 'history';
 import reduxThunk from 'redux-thunk';
 import App from './App';

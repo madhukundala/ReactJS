@@ -1,6 +1,7 @@
 This project was done for NAB digital test 
 
 
+Note: Please make sure backend application is up and running . 
 ## Table of Contents
 
 

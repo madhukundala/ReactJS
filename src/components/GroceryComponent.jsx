@@ -24,10 +24,10 @@ class GroceryComponent extends React.Component {
 
             <>
                 <div className="row">
-                    <div className="col-md-1"><label>Category : </label></div>
-                    <div className="col-md-2"><Select options={categoryList} onChange={handleCategoryOnChange} /></div>
+                    <div className="col-md-1"><label>Category </label></div>
+                    <div className="col-md-2 mr-sm-2"><Select options={categoryList} onChange={handleCategoryOnChange} /></div>
                     <div className="col-md-2">
-                        <button onClick={searchByCategoryaction}>Search</button>
+                        <button class="btn btn-primary" onClick={searchByCategoryaction}>Search</button>
 
                     </div>
                 </div>
